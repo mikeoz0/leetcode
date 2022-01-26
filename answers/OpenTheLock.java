@@ -29,13 +29,13 @@ class OpenTheLock {
                 if (curr.equals(target)) {
                     return count;
                 }
-                // 4 different ways to move forward:::
+                // 8 different ways to move forward:::
 
                 for (int j = 0; j < 4; j++) {
                     int currInt = Character.getNumericValue(curr.charAt(j));
 
                     StringBuilder strB = new StringBuilder(curr);
-                    strB.setCharAt(j, Character.forDigit(currInt + 1, 10));
+                    strB.setCharAt(j, Character.forDigit(currInt + 1, 10)); //0000
                     String newCombo1 = strB.toString();
                     if (!set.contains(newCombo1)) {
                         q.offer(newCombo1);
@@ -46,14 +46,14 @@ class OpenTheLock {
                     int rollBackNum = currInt == 0 ? 9 : currInt - 1;
                     strB.setCharAt(j, Character.forDigit(rollBackNum, 10));
                     String newCombo2 = strB.toString();
-                    if (!set.contains(newCombo2)) {
+                    if (!set.contains(newCombo2)) {//9000
                         q.offer(newCombo2);
                         set.add(newCombo2);
                     }
                     //System.out.println(" currInt " + currInt);
                     //System.out.println(" q " + q);
                 }
-            }
+            }//end of the for loop (end of the level)
 
             count++;
             //System.out.println("count " + count);

@@ -7,10 +7,10 @@ public class Main {
         //location
         double latitude = 39.742043;
         double longitude = -104.991531;
-        String type = "forecast";
+        FactoryGenerator.SkiReportType type = FactoryGenerator.SkiReportType.FORECAST;
 
         //get the factory first, (ski report generator)
-        AbstractSkiReportFactory factory = FactoryGenerator.getSkiReportGenerator(type);
+        AbstractSkiReportFactory factory = FactoryGenerator.getSkiReportGenerator(type); //2 factories
 
         SkiReport myNearestSkiForeCast = factory.getNearestSkiReport(latitude, longitude);
 

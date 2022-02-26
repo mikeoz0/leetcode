@@ -1,12 +1,19 @@
 package abstractfactory;
 
 public class FactoryGenerator {
-    public static AbstractSkiReportFactory getSkiReportGenerator(String type){
-        if (type.equalsIgnoreCase("forecast")) {
-            return new SkiWeatherForcastFactory();
-        } else if (type.equalsIgnoreCase("snow_report")){
-            return new SkiConditionsFactory();
+
+    public enum SkiReportType {
+        FORECAST, SNOW_REPORT
+    }
+
+    public static AbstractSkiReportFactory getSkiReportGenerator(SkiReportType skiReportType){
+        switch (skiReportType) {
+            case FORECAST:
+                return new SkiWeatherForcastFactory();
+            case SNOW_REPORT:
+                return new SkiConditionsFactory();
+            default:
+                throw new IllegalArgumentException("cannot find ski report factory");
         }
-        throw new IllegalArgumentException("cannot find ski report factory");
     }
 }
